@@ -71,7 +71,7 @@ CREATE TABLE submissions (
     id: 'system-integrations',
     icon: '⬡',
     title: 'System Integrations & APIs',
-    tagline: 'Make your tools talk to each other',
+    tagline: 'Connect your tools seamlessly',
     description:
       'Connect your CRM, project management, communication tools, and data sources so information flows automatically — no more copy-paste between systems.',
     deliverables: ['API design & development', 'Webhook setup', 'Third-party integrations', 'Error handling & retries'],
