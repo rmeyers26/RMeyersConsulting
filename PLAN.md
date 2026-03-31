@@ -173,7 +173,7 @@ $ rmeyers build --solution
 
 **Automate**
 - Workflow Automation
-- Cloud Services & Hosting
+- AI Workflows & Assistants
 - Rapid Prototyping
 
 Card CTAs changed from `Learn more →` to `See examples →` or `How this works →`

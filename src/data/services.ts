@@ -110,28 +110,34 @@ const onboard = workflow('new-client', [
     bucket: 'automate',
   },
   {
-    id: 'cloud-hosting',
+    id: 'ai-workflows',
     icon: '⬡',
-    title: 'Cloud Services & Hosting',
-    tagline: 'Reliable infrastructure without the headache',
+    title: 'AI Workflows & Assistants',
+    tagline: 'Practical AI that fits your operations',
     description:
-      'Set up and manage cloud infrastructure on AWS, GCP, or Vercel — from simple app hosting to scalable multi-service architectures.',
-    deliverables: ['Cloud setup & config', 'CI/CD pipelines', 'Monitoring & alerts', 'Cost optimization'],
-    codeSnippet: `# Automated deployment pipeline
-name: Deploy to Production
+      'Design and implement AI-powered workflows, copilots, and assistants that reduce repetitive work, improve response speed, and keep humans in control.',
+    deliverables: ['LLM workflow design', 'Prompt + eval pipelines', 'RAG knowledge assistants', 'Guardrails & monitoring'],
+    codeSnippet: `// OpenAI + RAG support assistant
+import OpenAI from 'openai'
 
-on:
-  push:
-    branches: [main]
+const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: npm ci && npm run build
-      - run: vercel deploy --prod`,
-    language: 'yaml',
+export async function answerCustomer(ticket: { question: string }) {
+  const docs = await vectorStore.similaritySearch(ticket.question, 5)
+  const context = docs.map(d => d.pageContent).join('\\n\\n')
+
+  const completion = await client.responses.create({
+    model: 'gpt-4.1-mini',
+    instructions: 'Answer with concise, policy-safe guidance.',
+    input: [
+      { role: 'user', content: ticket.question },
+      { role: 'user', content: \`Relevant context:\\n\${context}\` },
+    ],
+  })
+
+  return completion.output_text
+}`,
+    language: 'typescript',
     accentColor: 'purple',
     bucket: 'automate',
   },
