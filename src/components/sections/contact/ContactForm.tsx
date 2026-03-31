@@ -30,6 +30,23 @@ export default function ContactForm() {
     <section className="section-padding bg-abyss relative overflow-hidden">
       <GlowOrb color="cyan" size="lg" className="top-0 right-0 translate-x-1/3 -translate-y-1/3" />
 
+      {/* Hidden static form for Netlify build-time detection */}
+      <form
+        name="contact"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        hidden
+        action="/contact?success=true"
+        method="POST"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="text" name="company" />
+        <textarea name="message" />
+        <input name="bot-field" />
+      </form>
+
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
