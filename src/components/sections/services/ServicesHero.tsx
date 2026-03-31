@@ -28,7 +28,7 @@ export default function ServicesHero() {
           </h1>
           <p className="text-ghost text-lg max-w-2xl">
             Every service starts with understanding your actual workflow — not a generic template.
-            Tap any card to see a real code example of how we solve that type of problem.
+            We design and build solutions that match how your team already operates.
           </p>
         </motion.div>
       </div>

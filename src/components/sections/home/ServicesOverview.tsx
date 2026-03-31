@@ -22,7 +22,7 @@ export default function ServicesOverview() {
             <span className="text-gradient-cyan">Your Workflow</span>
           </h2>
           <p className="text-ghost max-w-xl">
-            Tap any card to see a code example of how we approach that problem.
+            Purpose-built services designed around how your team actually works.
           </p>
         </motion.div>
 
