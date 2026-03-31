@@ -1,7 +1,8 @@
 
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 function encodeNetlifyForm(data: Record<string, string>) {
   const params = new URLSearchParams()
@@ -11,6 +12,18 @@ function encodeNetlifyForm(data: Record<string, string>) {
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+
+  const router = useRouter()
+
+  useEffect(() => {
+    if (status === 'success') {
+      const id = setTimeout(() => {
+        // Send user back to home after brief thank-you state
+        router.push('/')
+      }, 3500)
+      return () => clearTimeout(id)
+    }
+  }, [status, router])
 
   const isDisabled = useMemo(() => status === 'submitting' || status === 'success', [status])
 
