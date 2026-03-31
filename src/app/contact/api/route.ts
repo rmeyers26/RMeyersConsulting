@@ -1,4 +1,4 @@
-// This file enables Netlify Forms with Next.js App Router
+// Netlify Forms handler for Next.js App Router
 // See: https://ntl.fyi/next-runtime-forms-migration
 import { NextResponse } from 'next/server'
 

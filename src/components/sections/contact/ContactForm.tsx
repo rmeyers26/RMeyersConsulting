@@ -58,7 +58,7 @@ export default function ContactForm() {
                 method="POST"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field"
-                action="/contact?success=true"
+                action="/contact/api"
                 className="space-y-5"
                 onSubmit={handleSubmit}
               >
@@ -123,14 +123,14 @@ export default function ContactForm() {
                     'Send Message'
                   )}
                 </GlowButton>
-              </form>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-16"
+              <form
+                name="contact"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                hidden
+                action="/contact/api"
+                method="POST"
               >
-                <div className="text-4xl mb-4">✓</div>
                 <h3 className="text-slate-light font-semibold text-xl mb-2 font-sans">Message sent!</h3>
                 <p className="text-ghost text-sm">
                   We&apos;ll be in touch within 24 hours.
