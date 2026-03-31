@@ -24,26 +24,30 @@ export default function ContactForm() {
     }
     const body = params.toString()
 
+    const endpoints = ['/__forms', '/__forms.html']
     // #region agent log
-    fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H5',location:'ContactForm.tsx:23',message:'Submitting migrated Netlify form to static endpoint',data:{action:'/__forms.html',fields:Array.from(formData.keys())},timestamp:Date.now()})}).catch(()=>{});
+    fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H5',location:'ContactForm.tsx:24',message:'Submitting migrated Netlify form to static endpoint candidates',data:{endpoints,fields:Array.from(formData.keys())},timestamp:Date.now()})}).catch(()=>{});
     // #endregion
 
     try {
-      const response = await fetch('/__forms.html', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body,
-      })
+      for (const endpoint of endpoints) {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body,
+        })
 
-      // #region agent log
-      fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H6',location:'ContactForm.tsx:37',message:'Netlify static form POST response',data:{ok:response.ok,status:response.status},timestamp:Date.now()})}).catch(()=>{});
-      // #endregion
+        // #region agent log
+        fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H6',location:'ContactForm.tsx:40',message:'Netlify static form POST response',data:{endpoint,ok:response.ok,status:response.status},timestamp:Date.now()})}).catch(()=>{});
+        // #endregion
 
-      if (response.ok) {
-        setSubmitted(true)
-        form.reset()
+        if (response.ok) {
+          setSubmitted(true)
+          form.reset()
+          break
+        }
       }
     } finally {
       setLoading(false)
@@ -70,7 +74,7 @@ export default function ContactForm() {
               <form 
                 name="contact"
                 method="POST"
-                action="/__forms.html"
+                action="/__forms"
                 className="space-y-5"
                 onSubmit={handleSubmit}
               >
