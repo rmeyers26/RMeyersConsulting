@@ -6,7 +6,13 @@ export const metadata: Metadata = {
   description: 'Start a conversation about your project. We respond within 24 hours.',
 }
 
-export default function ContactPage() {
+export default function ContactPage({
+  searchParams,
+}: {
+  searchParams?: { success?: string }
+}) {
+  const showSuccess = searchParams?.success === '1'
+
   return (
     <>
       {/* Hero */}
@@ -22,6 +28,11 @@ export default function ContactPage() {
             <p className="text-ghost text-lg max-w-xl">
               Tell us what you&apos;re building, what&apos;s broken, or what you wish existed. We&apos;ll respond with honest thoughts — no pitch, no pressure.
             </p>
+            {showSuccess ? (
+              <p className="mt-6 text-sm text-green font-mono">
+                ✓ message_sent: true
+              </p>
+            ) : null}
           </div>
         </div>
       </section>
