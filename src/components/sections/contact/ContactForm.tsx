@@ -24,30 +24,26 @@ export default function ContactForm() {
     }
     const body = params.toString()
 
-    const endpoints = ['/__forms', '/__forms.html']
     // #region agent log
-    fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H5',location:'ContactForm.tsx:24',message:'Submitting migrated Netlify form to static endpoint candidates',data:{endpoints,fields:Array.from(formData.keys())},timestamp:Date.now()})}).catch(()=>{});
+    fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H11',location:'ContactForm.tsx:24',message:'Submitting contact form to app route handler',data:{endpoint:'/contact/api',fields:Array.from(formData.keys())},timestamp:Date.now()})}).catch(()=>{});
     // #endregion
 
     try {
-      for (const endpoint of endpoints) {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body,
-        })
+      const response = await fetch('/contact/api', {
+        method: 'POST',
+        body,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      })
 
-        // #region agent log
-        fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H6',location:'ContactForm.tsx:40',message:'Netlify static form POST response',data:{endpoint,ok:response.ok,status:response.status},timestamp:Date.now()})}).catch(()=>{});
-        // #endregion
+      // #region agent log
+      fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H12',location:'ContactForm.tsx:39',message:'Route handler form POST response',data:{ok:response.ok,status:response.status,redirected:response.redirected,url:response.url},timestamp:Date.now()})}).catch(()=>{});
+      // #endregion
 
-        if (response.ok) {
-          setSubmitted(true)
-          form.reset()
-          break
-        }
+      if (response.ok) {
+        setSubmitted(true)
+        form.reset()
       }
     } finally {
       setLoading(false)
@@ -74,16 +70,10 @@ export default function ContactForm() {
               <form 
                 name="contact"
                 method="POST"
-                action="/__forms"
+                action="/contact/api"
                 className="space-y-5"
                 onSubmit={handleSubmit}
               >
-                {/* Netlify bot field */}
-                <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="to" value="richard@rmeyersconsulting.com" />
-                <p className="hidden">
-                  <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
-                </p>
                 <div>
                   <label className="block font-mono text-xs text-cyan-dim mb-2">// your_name *</label>
                   <input
