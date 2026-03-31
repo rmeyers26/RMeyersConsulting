@@ -45,9 +45,6 @@ export default function Footer() {
           <p className="font-mono text-xs text-ghost/60">
             © {new Date().getFullYear()} RMeyers Consulting. All rights reserved.
           </p>
-          <p className="font-mono text-xs text-ghost/40">
-            // Built with Next.js + TypeScript
-          </p>
         </div>
       </div>
     </footer>
