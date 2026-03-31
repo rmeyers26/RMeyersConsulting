@@ -10,7 +10,7 @@ export default function RecentWins() {
   const { ref, variants, animate } = useScrollAnimation()
 
   return (
-    <section className="section-padding bg-void relative overflow-hidden">
+    <section id="results" className="section-padding bg-void relative overflow-hidden scroll-mt-28 md:scroll-mt-24">
       {/* Subtle grid */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.03]"

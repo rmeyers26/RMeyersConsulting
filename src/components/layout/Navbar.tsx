@@ -8,16 +8,16 @@ import { cn } from '@/lib/utils'
 import GlowButton from '@/components/ui/GlowButton'
 
 const navLinks = [
-  { href: '/',         label: 'Home' },
-  { href: '/services', label: 'Services' },
-  { href: '/process',  label: 'Process' },
-  { href: '/about',    label: 'About' },
-  { href: '/contact',  label: 'Contact' },
+  { href: '/#what-we-build', label: 'What We Build' },
+  { href: '/#results', label: 'Results' },
+  { href: '/#how-we-work', label: 'How We Work' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [currentHash, setCurrentHash] = useState('')
   const pathname = usePathname()
 
   useEffect(() => {
@@ -28,6 +28,19 @@ export default function Navbar() {
 
   // Close menu on route change
   useEffect(() => { setMenuOpen(false) }, [pathname])
+
+  useEffect(() => {
+    const syncHash = () => setCurrentHash(window.location.hash || '')
+    syncHash()
+    window.addEventListener('hashchange', syncHash)
+    return () => window.removeEventListener('hashchange', syncHash)
+  }, [])
+
+  const isNavLinkActive = (href: string) => {
+    if (href === '/contact') return pathname === '/contact'
+    const linkHash = href.startsWith('/#') ? href.slice(1) : ''
+    return pathname === '/' && currentHash === linkHash
+  }
 
   return (
     <>
@@ -58,13 +71,13 @@ export default function Navbar() {
                 href={link.href}
                 className={cn(
                   'relative px-3 py-2 text-sm font-mono transition-colors',
-                  pathname === link.href
+                  isNavLinkActive(link.href)
                     ? 'text-cyan'
                     : 'text-ghost hover:text-slate-light'
                 )}
               >
                 {link.label}
-                {pathname === link.href && (
+                {isNavLinkActive(link.href) && (
                   <motion.span
                     layoutId="nav-indicator"
                     className="absolute bottom-0 left-3 right-3 h-px bg-cyan"
@@ -120,9 +133,10 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={() => setMenuOpen(false)}
                   className={cn(
-                    'px-4 py-4 font-mono text-lg border-b border-border/40',
-                    pathname === link.href
+                    'px-4 py-3.5 font-mono text-base sm:text-lg border-b border-border/40',
+                    isNavLinkActive(link.href)
                       ? 'text-cyan'
                       : 'text-ghost hover:text-slate-light'
                   )}

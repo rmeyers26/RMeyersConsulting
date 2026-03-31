@@ -13,7 +13,7 @@ export default function ServicesOverview() {
   const featured = services.slice(0, 6)
 
   return (
-    <section className="section-padding bg-abyss relative overflow-hidden">
+    <section id="what-we-build" className="section-padding bg-abyss relative overflow-hidden scroll-mt-28 md:scroll-mt-24">
       <div className="section-container">
         <motion.div ref={ref} variants={variants} initial="hidden" animate={animate} className="mb-12">
           <SectionLabel>What We Build</SectionLabel>

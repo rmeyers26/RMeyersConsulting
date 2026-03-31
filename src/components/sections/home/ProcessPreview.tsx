@@ -11,7 +11,7 @@ export default function ProcessPreview() {
   const { ref, variants, animate } = useScrollAnimation()
 
   return (
-    <section className="section-padding bg-abyss relative overflow-hidden">
+    <section id="how-we-work" className="section-padding bg-abyss relative overflow-hidden scroll-mt-28 md:scroll-mt-24">
       <div className="section-container">
         <motion.div ref={ref} variants={variants} initial="hidden" animate={animate} className="mb-12">
           <SectionLabel>How We Work</SectionLabel>
