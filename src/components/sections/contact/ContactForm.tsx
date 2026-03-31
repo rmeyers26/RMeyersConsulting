@@ -13,10 +13,41 @@ export default function ContactForm() {
   const [loading, setLoading] = useState(false)
   const { ref, variants, animate } = useScrollAnimation()
 
-  // Netlify handles the form submission, so no JS handler is needed
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     setLoading(true)
-    // Let the browser submit the form to Netlify
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const params = new URLSearchParams()
+    for (const [key, value] of formData.entries()) {
+      if (typeof value === 'string') params.append(key, value)
+    }
+    const body = params.toString()
+
+    // #region agent log
+    fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H5',location:'ContactForm.tsx:23',message:'Submitting migrated Netlify form to static endpoint',data:{action:'/__forms.html',fields:Array.from(formData.keys())},timestamp:Date.now()})}).catch(()=>{});
+    // #endregion
+
+    try {
+      const response = await fetch('/__forms.html', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body,
+      })
+
+      // #region agent log
+      fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H6',location:'ContactForm.tsx:37',message:'Netlify static form POST response',data:{ok:response.ok,status:response.status},timestamp:Date.now()})}).catch(()=>{});
+      // #endregion
+
+      if (response.ok) {
+        setSubmitted(true)
+        form.reset()
+      }
+    } finally {
+      setLoading(false)
+    }
   }
 
   const inputClass = cn(
@@ -30,23 +61,6 @@ export default function ContactForm() {
     <section className="section-padding bg-abyss relative overflow-hidden">
       <GlowOrb color="cyan" size="lg" className="top-0 right-0 translate-x-1/3 -translate-y-1/3" />
 
-      {/* Hidden static form for Netlify build-time detection */}
-      <form
-        name="contact"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        hidden
-        action="/contact/api"
-        method="POST"
-      >
-        <input type="hidden" name="form-name" value="contact" />
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="text" name="company" />
-        <textarea name="message" />
-        <input name="bot-field" />
-      </form>
-
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
@@ -56,9 +70,7 @@ export default function ContactForm() {
               <form 
                 name="contact"
                 method="POST"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                action="/contact/api"
+                action="/__forms.html"
                 className="space-y-5"
                 onSubmit={handleSubmit}
               >
