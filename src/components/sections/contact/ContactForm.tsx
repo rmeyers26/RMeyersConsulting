@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
@@ -36,7 +36,7 @@ export default function ContactForm() {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         hidden
-        action="/contact?success=true"
+        action="/contact/api"
         method="POST"
       >
         <input type="hidden" name="form-name" value="contact" />
@@ -123,14 +123,14 @@ export default function ContactForm() {
                     'Send Message'
                   )}
                 </GlowButton>
-              <form
-                name="contact"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                hidden
-                action="/contact/api"
-                method="POST"
+              </form>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-16"
               >
+                <div className="text-4xl mb-4">✓</div>
                 <h3 className="text-slate-light font-semibold text-xl mb-2 font-sans">Message sent!</h3>
                 <p className="text-ghost text-sm">
                   We&apos;ll be in touch within 24 hours.
