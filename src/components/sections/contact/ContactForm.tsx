@@ -13,13 +13,10 @@ export default function ContactForm() {
   const [loading, setLoading] = useState(false)
   const { ref, variants, animate } = useScrollAnimation()
 
+  // Netlify handles the form submission, so no JS handler is needed
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
     setLoading(true)
-    // Simulate submit — replace with real API call
-    await new Promise(r => setTimeout(r, 1200))
-    setLoading(false)
-    setSubmitted(true)
+    // Let the browser submit the form to Netlify
   }
 
   const inputClass = cn(
@@ -39,12 +36,27 @@ export default function ContactForm() {
           {/* Left: Form */}
           <motion.div ref={ref} variants={variants} initial="hidden" animate={animate}>
             {!submitted ? (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form 
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                action="/contact?success=true"
+                className="space-y-5"
+                onSubmit={handleSubmit}
+              >
+                {/* Netlify bot field */}
+                <input type="hidden" name="form-name" value="contact" />
+                <input type="hidden" name="to" value="richard@rmeyersconsulting.com" />
+                <p className="hidden">
+                  <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                </p>
                 <div>
                   <label className="block font-mono text-xs text-cyan-dim mb-2">// your_name *</label>
                   <input
                     required
                     type="text"
+                    name="name"
                     placeholder="Jane Smith"
                     className={inputClass}
                   />
@@ -54,6 +66,7 @@ export default function ContactForm() {
                   <input
                     required
                     type="email"
+                    name="email"
                     placeholder="jane@company.com"
                     className={inputClass}
                   />
@@ -62,6 +75,7 @@ export default function ContactForm() {
                   <label className="block font-mono text-xs text-cyan-dim mb-2">// company</label>
                   <input
                     type="text"
+                    name="company"
                     placeholder="Acme Corp (optional)"
                     className={inputClass}
                   />
@@ -71,6 +85,7 @@ export default function ContactForm() {
                   <textarea
                     required
                     rows={5}
+                    name="message"
                     placeholder="What problem are you trying to solve? What tools are you using today? What does success look like?"
                     className={cn(inputClass, 'resize-none')}
                   />
