@@ -25,11 +25,11 @@ export default function ContactForm() {
     const body = params.toString()
 
     // #region agent log
-    fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H11',location:'ContactForm.tsx:24',message:'Submitting contact form to app route handler',data:{endpoint:'/contact/api',fields:Array.from(formData.keys())},timestamp:Date.now()})}).catch(()=>{});
+    fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H15',location:'ContactForm.tsx:24',message:'Submitting contact form to Netlify forms endpoint',data:{endpoint:'/',fields:Array.from(formData.keys())},timestamp:Date.now()})}).catch(()=>{});
     // #endregion
 
     try {
-      const response = await fetch('/contact/api', {
+      const response = await fetch('/', {
         method: 'POST',
         body,
         headers: {
@@ -38,7 +38,7 @@ export default function ContactForm() {
       })
 
       // #region agent log
-      fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H12',location:'ContactForm.tsx:39',message:'Route handler form POST response',data:{ok:response.ok,status:response.status,redirected:response.redirected,url:response.url},timestamp:Date.now()})}).catch(()=>{});
+      fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H16',location:'ContactForm.tsx:39',message:'Netlify forms POST response',data:{ok:response.ok,status:response.status,redirected:response.redirected,url:response.url},timestamp:Date.now()})}).catch(()=>{});
       // #endregion
 
       if (response.ok) {
@@ -74,10 +74,11 @@ export default function ContactForm() {
               <form 
                 name="contact"
                 method="POST"
-                action="/contact/api"
+                action="/"
                 className="space-y-5"
                 onSubmit={handleSubmit}
               >
+                <input type="hidden" name="form-name" value="contact" />
                 <div>
                   <label className="block font-mono text-xs text-cyan-dim mb-2">// your_name *</label>
                   <input
