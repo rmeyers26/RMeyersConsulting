@@ -26,7 +26,7 @@ export default function ContactForm() {
     for (const [k, v] of formData.entries()) payload[k] = String(v)
 
     try {
-      const res = await fetch('/', {
+      const res = await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encodeNetlifyForm(payload),
@@ -49,7 +49,7 @@ export default function ContactForm() {
         data-netlify="true"
         netlify-honeypot="bot-field"
         hidden
-        action="/contact?success=1"
+        action="/__forms.html"
         method="POST"
       >
         <input type="hidden" name="form-name" value="contact" />
@@ -66,7 +66,7 @@ export default function ContactForm() {
         method="POST"
         data-netlify="true"
         netlify-honeypot="bot-field"
-        action="/contact?success=1"
+        action="/__forms.html"
         onSubmit={onSubmit}
         style={{ maxWidth: 480, margin: '0 auto', background: '#101828', padding: 32, borderRadius: 12 }}
       >
