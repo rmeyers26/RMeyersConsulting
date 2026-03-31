@@ -7,24 +7,24 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 const values = [
   {
-    comment: '// We build what you actually need, not what\'s trendy',
+    comment: "// We build what you actually need, not what's trendy",
     detail:
-      "Every recommendation starts with your specific constraints and goals — not the latest framework everyone's excited about. We&apos;re opinionated about quality, pragmatic about tools.",
+      "Every recommendation starts with your specific constraints and goals — not the latest framework everyone's excited about. We're opinionated about quality, pragmatic about tools.",
   },
   {
-    comment: '// We explain the how, not just the what',
+    comment: "// We explain the how, not just the what",
     detail:
-      "We don&apos;t hand you a black box. You&apos;ll understand what we built, why we built it that way, and how to hand it off or extend it later. Documentation isn&apos;t an afterthought.",
+      "We don't hand you a black box. You'll understand what we built, why we built it that way, and how to hand it off or extend it later. Documentation isn't an afterthought.",
   },
   {
-    comment: '// We write code we&apos;d want to maintain',
+    comment: "// We write code we'd want to maintain",
     detail:
-      'Short-term speed at the cost of future pain isn&apos;t a tradeoff we make. We write clear, tested, well-structured code — because someone (usually you, or future us) will need to touch it again.',
+      "Short-term speed at the cost of future pain isn't a tradeoff we make. We write clear, tested, well-structured code — because someone (usually you, or future us) will need to touch it again.",
   },
   {
-    comment: '// We&apos;re done when you&apos;re successful, not when we&apos;re paid',
+    comment: "// We're done when you're successful, not when we're paid",
     detail:
-      "Launch is the beginning, not the finish line. Every project includes training, documentation, and a support period. Your team needs to actually use this thing — that&apos;s the real measure of success.",
+      "Launch is the beginning, not the finish line. Every project includes training, documentation, and a support period. Your team needs to actually use this thing — that's the real measure of success.",
   },
 ]
 
