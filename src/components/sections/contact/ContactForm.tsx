@@ -45,6 +45,10 @@ export default function ContactForm() {
         setSubmitted(true)
         form.reset()
       }
+    } catch (error) {
+      // #region agent log
+      fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H14',location:'ContactForm.tsx:49',message:'Route handler form POST failed',data:{error:error instanceof Error ? error.message : 'unknown'},timestamp:Date.now()})}).catch(()=>{});
+      // #endregion
     } finally {
       setLoading(false)
     }
