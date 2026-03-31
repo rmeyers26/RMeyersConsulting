@@ -25,6 +25,9 @@ fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{metho
 // #region agent log
 fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'pre-fix',hypothesisId:'H4',location:'next.config.mjs:23',message:'Check migration bypass env and route presence',data:{NETLIFY_NEXT_VERIFY_FORMS:process.env.NETLIFY_NEXT_VERIFY_FORMS ?? null,hasRouteHandler},timestamp:Date.now()})}).catch(()=>{});
 // #endregion
+// #region agent log
+fetch('http://127.0.0.1:7245/ingest/9ef6f9ea-76e7-4d61-b74c-84bc4b7ea7c6',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'501fb7'},body:JSON.stringify({sessionId:'501fb7',runId:'post-fix',hypothesisId:'H7',location:'next.config.mjs:27',message:'Capture Netlify deploy environment details for forms 404',data:{NETLIFY:process.env.NETLIFY ?? null,PUBLISH_DIR:process.env.PUBLISH_DIR ?? null,DEPLOY_PRIME_URL:process.env.DEPLOY_PRIME_URL ?? null,URL:process.env.URL ?? null},timestamp:Date.now()})}).catch(()=>{});
+// #endregion
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

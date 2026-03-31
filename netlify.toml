@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "/__forms"
+  to = "/__forms.html"
+  status = 200
