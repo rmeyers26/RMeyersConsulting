@@ -1,8 +1,11 @@
 <html>
   <head></head>
   <body>
-    <form name="contact" data-netlify="true" hidden>
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
       <input type="hidden" name="form-name" value="contact" />
+      <p hidden>
+        <label>Do not fill this out: <input name="bot-field" type="text" /></label>
+      </p>
       <input name="name" type="text" />
       <input name="email" type="email" />
       <input name="company" type="text" />
