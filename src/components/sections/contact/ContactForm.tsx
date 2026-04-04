@@ -81,7 +81,7 @@ export default function ContactForm() {
         netlify-honeypot="bot-field"
         action="/__forms.html"
         onSubmit={onSubmit}
-        style={{ maxWidth: 480, margin: '0 auto', background: '#101828', padding: 32, borderRadius: 12 }}
+        style={{ maxWidth: 480, margin: '0 auto', background: '#101828', padding: '24px 16px', borderRadius: 12 }}
       >
         <input type="hidden" name="form-name" value="contact" />
         <p style={{ display: 'none' }}>
@@ -132,7 +132,7 @@ export default function ContactForm() {
             name="name"
             placeholder="Jane Smith"
             disabled={isDisabled}
-            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff' }}
+            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ marginBottom: 16 }}>
@@ -144,7 +144,7 @@ export default function ContactForm() {
             name="email"
             placeholder="jane@company.com"
             disabled={isDisabled}
-            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff' }}
+            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ marginBottom: 16 }}>
@@ -155,7 +155,7 @@ export default function ContactForm() {
             name="company"
             placeholder="Acme Corp (optional)"
             disabled={isDisabled}
-            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff' }}
+            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', boxSizing: 'border-box' }}
           />
         </div>
         <div style={{ marginBottom: 20 }}>
@@ -167,7 +167,7 @@ export default function ContactForm() {
             rows={5}
             placeholder="What problem are you trying to solve? What tools are you using today? What does success look like?"
             disabled={isDisabled}
-            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', resize: 'vertical' }}
+            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', resize: 'vertical', boxSizing: 'border-box' }}
           />
         </div>
         <button
