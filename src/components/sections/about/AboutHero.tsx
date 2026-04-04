@@ -17,7 +17,7 @@ export default function AboutHero() {
           <span className="font-mono text-xs text-cyan-dim mb-3 block">
             ~/rmeyers &gt; about
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-light font-sans mb-6">
+          <h1 className="text-xl md:text-2xl font-bold text-slate-light font-sans mb-6">
             We&apos;re Builders Who{' '}
             <span className="text-gradient-cyan">Happen to Consult</span>
           </h1>

@@ -3,8 +3,27 @@ import type { Config } from 'tailwindcss'
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
+    // 8-step golden-ratio type scale (base 16px, ×1.618 from lg upward)
+    // 1: 10px  2: 12px  3: 14px  4: 16px  5: 20px  6: 32px  7: 52px  8: 84px
+    fontSize: {
+      '2xs':  ['0.625rem', { lineHeight: '1rem' }],        // 10px — labels, legal
+      'xs':   ['0.75rem',  { lineHeight: '1.25rem' }],     // 12px — tags, badges, mono
+      'sm':   ['0.875rem', { lineHeight: '1.5rem' }],      // 14px — secondary body
+      'base': ['1rem',     { lineHeight: '1.625rem' }],    // 16px — primary body
+      'lg':   ['1.25rem',  { lineHeight: '1.75rem' }],     // 20px — lead text
+      'xl':   ['2rem',     { lineHeight: '2.5rem' }],      // 32px — h3 / section titles
+      '2xl':  ['3.25rem',  { lineHeight: '3.75rem' }],     // 52px — h2 / page headings
+      '3xl':  ['5.25rem',  { lineHeight: '5.75rem' }],     // 84px — h1 / hero display
+    },
     extend: {
       colors: {
+        // Brand palette
+        porcelain: '#fffffа',  // near-white (WCAG: 20.9:1 on black, 8.0:1 on charcoal)
+        charcoal:  '#515052',  // medium gray (WCAG: 8.0:1 on porcelain)
+        black:     '#000103',  // near-black
+        graphite:  '#333138',  // dark gray
+        cinnabar:  '#ff312e',  // red accent — use only on black/graphite, large text only on others
+        // Existing site palette
         void:          '#050810',
         abyss:         '#0a0f1e',
         surface:       '#0d1526',

@@ -17,7 +17,7 @@ export default function ServicesOverview() {
       <div className="section-container">
         <motion.div ref={ref} variants={variants} initial="hidden" animate={animate} className="mb-12">
           <SectionLabel>What We Build</SectionLabel>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-light font-sans mb-4">
+          <h2 className="text-xl font-bold text-slate-light font-sans mb-4">
             Tools That Actually Fit{' '}
             <span className="text-gradient-cyan">Your Workflow</span>
           </h2>

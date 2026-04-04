@@ -23,7 +23,7 @@ export default function RecentWins() {
       <div className="section-container relative z-10">
         <motion.div ref={ref} variants={variants} initial="hidden" animate={animate} className="mb-12">
           <SectionLabel color="green">Proof It Works</SectionLabel>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-light font-sans mb-4">
+          <h2 className="text-xl font-bold text-slate-light font-sans mb-4">
             Real Results for Real Teams
           </h2>
           <p className="text-ghost max-w-xl">
@@ -54,7 +54,7 @@ export default function RecentWins() {
               )} />
 
               <div className="flex items-start gap-4">
-                <span className="text-3xl">{win.icon}</span>
+                <span className="text-xl">{win.icon}</span>
                 <div className="flex-1 min-w-0">
                   <span className="font-mono text-xs text-ghost/60 block mb-1">
                     {win.category}
@@ -66,7 +66,7 @@ export default function RecentWins() {
                   {/* Stat */}
                   <div className="flex items-baseline gap-2 mb-3">
                     <span className={cn(
-                      'font-mono font-bold text-2xl',
+                      'font-mono font-bold text-xl',
                       i % 2 === 0 ? 'text-cyan' : 'text-green'
                     )}>
                       {win.stat}

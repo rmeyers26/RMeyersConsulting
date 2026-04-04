@@ -23,7 +23,7 @@ export default function HomeCTA() {
           <span className="font-mono text-xs text-cyan-dim tracking-[0.2em] uppercase mb-4 block">
             // Ready when you are
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-light font-sans mb-6 leading-tight">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-light font-sans mb-6 leading-tight">
             Let&apos;s Fix Your{' '}
             <span className="text-gradient-cyan">Workflow</span>
           </h2>

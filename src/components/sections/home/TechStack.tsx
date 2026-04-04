@@ -27,7 +27,7 @@ export default function TechStack() {
       <div className="section-container">
         <motion.div ref={ref} variants={variants} initial="hidden" animate={animate} className="mb-10 text-center">
           <SectionLabel className="text-center block">Built With</SectionLabel>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-light font-sans mb-3">
+          <h2 className="text-xl font-bold text-slate-light font-sans mb-3">
             Modern Stack, Proven Tools
           </h2>
           <p className="text-ghost max-w-lg mx-auto text-sm">
@@ -48,9 +48,9 @@ export default function TechStack() {
                 {groupedTech[category].map((techName) => (
                   <span
                     key={`${category}-${techName}`}
-                    className="inline-flex max-w-full items-center gap-1 px-3 py-1.5 rounded-md border border-border/80 bg-void/40 font-mono text-[11px] leading-tight sm:text-sm text-ghost break-words"
+                    className="inline-flex max-w-full items-center gap-1 px-3 py-1.5 rounded-md border border-border/80 bg-void/40 font-mono text-2xs leading-tight sm:text-sm text-ghost break-words"
                   >
-                    <span className="text-cyan-dim/60 text-[10px] sm:text-xs">//</span>
+                    <span className="text-cyan-dim/60 text-2xs sm:text-xs">//</span>
                     {techName}
                   </span>
                 ))}

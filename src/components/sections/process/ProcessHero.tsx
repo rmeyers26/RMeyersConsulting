@@ -16,7 +16,7 @@ export default function ProcessHero() {
           <span className="font-mono text-xs text-green-dim mb-3 block">
             ~/rmeyers &gt; process --verbose
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-light font-sans mb-5">
+          <h1 className="text-xl md:text-2xl font-bold text-slate-light font-sans mb-5">
             How We Work
           </h1>
           <p className="text-ghost text-lg max-w-2xl">
