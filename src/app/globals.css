@@ -13,10 +13,35 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Momentum-based scrolling on older iOS (iOS 12 and below) */
+    -webkit-overflow-scrolling: touch;
   }
 
   body {
     @apply bg-void text-ghost overflow-x-hidden;
+  }
+
+  /* Remove tap highlight on mobile browsers (iOS/Android) */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent 300ms double-tap zoom delay on interactive elements */
+  a,
+  button,
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  label {
+    touch-action: manipulation;
+  }
+
+  /* Prevent iOS from auto-zooming when inputs are focused.
+     Browsers zoom in when the focused element has font-size < 16px. */
+  input,
+  textarea,
+  select {
+    font-size: max(16px, 1em);
   }
 
   /* Custom scrollbar */
@@ -74,5 +99,20 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Fallback for browsers that don't support backdrop-filter (Android Chrome < 76).
+   Elements using backdrop-blur will still have a solid dark background. */
+@supports not (backdrop-filter: blur(1px)) {
+  .supports-backdrop-fallback {
+    background-color: rgba(5, 8, 16, 0.95) !important;
+  }
+}
+
+/* Reduce heavy blur effects on small/low-power mobile screens */
+@media (max-width: 768px) {
+  .mobile-blur-reduce {
+    filter: blur(40px) !important;
   }
 }

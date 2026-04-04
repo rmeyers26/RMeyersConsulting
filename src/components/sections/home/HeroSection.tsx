@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import GlowButton from '@/components/ui/GlowButton'
 import GlowOrb from '@/components/effects/GlowOrb'
 import { terminalScenarios } from '@/data/terminalLines'
@@ -16,8 +16,24 @@ export default function HeroSection() {
   const [stepsDone, setStepsDone] = useState(0)
   const [cmdDone, setCmdDone] = useState(false)
   const [resultDone, setResultDone] = useState(false)
+  // Start as false (matches SSR output). After mount, read the actual screen size.
+  // This avoids a hydration mismatch while still enabling 3D on large screens.
+  const [isLargeScreen, setIsLargeScreen] = useState(false)
+  const prefersReducedMotion = useReducedMotion()
 
   const scenario = terminalScenarios[scenarioIdx]
+
+  // Detect large screen to conditionally enable 3D transform
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)')
+    setIsLargeScreen(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsLargeScreen(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+
+  // Disable 3D tilt on mobile/tablet or when reduced motion is preferred
+  const enable3D = isLargeScreen && !prefersReducedMotion
 
   // Reset when scenario changes
   useEffect(() => {
@@ -108,7 +124,7 @@ export default function HeroSection() {
             <p className="text-ghost text-lg leading-relaxed mb-8 max-w-lg">
               From 12 hours/week to under 1 — custom software built around how you actually work.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3">
               <GlowButton href="/contact" variant="primary" size="lg">
                 Start a Project
               </GlowButton>
@@ -124,16 +140,14 @@ export default function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="lg:block"
-            style={{
-              perspective: '1200px',
-            }}
+            style={enable3D ? { perspective: '1200px' } : undefined}
           >
             <motion.div
-              whileHover={{ rotateY: 0, rotateX: 0 }}
+              whileHover={enable3D ? { rotateY: 0, rotateX: 0 } : undefined}
               initial={{ rotateY: 0, rotateX: 0 }}
-              animate={{ rotateY: -3, rotateX: 2 }}
+              animate={enable3D ? { rotateY: -3, rotateX: 2 } : { rotateY: 0, rotateX: 0 }}
               transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-              style={{ transformStyle: 'preserve-3d' }}
+              style={enable3D ? { transformStyle: 'preserve-3d' } : undefined}
               className="rounded-xl"
             >
               {/* Terminal window */}
