@@ -22,7 +22,7 @@ export default function ContactPage({
             <span className="font-mono text-xs text-cyan-dim mb-3 block">
               ~/rmeyers &gt; initiate_contact --type=project
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-light font-sans mb-5">
+            <h1 className="text-xl md:text-2xl font-bold text-slate-light font-sans mb-5">
               Start a Conversation
             </h1>
             <p className="text-ghost text-lg max-w-xl">

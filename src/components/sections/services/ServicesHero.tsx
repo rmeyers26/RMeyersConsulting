@@ -23,7 +23,7 @@ export default function ServicesHero() {
           <span className="font-mono text-xs text-green-dim mb-3 block">
             ~/rmeyers &gt; services
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-light font-sans mb-5">
+          <h1 className="text-xl md:text-2xl font-bold text-slate-light font-sans mb-5">
             What We Build
           </h1>
           <p className="text-ghost text-lg max-w-2xl">

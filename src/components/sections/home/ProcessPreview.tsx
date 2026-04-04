@@ -15,7 +15,7 @@ export default function ProcessPreview() {
       <div className="section-container">
         <motion.div ref={ref} variants={variants} initial="hidden" animate={animate} className="mb-12">
           <SectionLabel>How We Work</SectionLabel>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-light font-sans mb-4">
+          <h2 className="text-xl font-bold text-slate-light font-sans mb-4">
             From Idea to Running Software
           </h2>
           <p className="text-ghost max-w-xl">
