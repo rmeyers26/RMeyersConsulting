@@ -38,7 +38,7 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
       />
 
       <div className={cn(
-        'text-2xl mb-4',
+        'text-xl mb-4',
         service.accentColor === 'cyan'   && 'text-cyan',
         service.accentColor === 'green'  && 'text-green',
         service.accentColor === 'purple' && 'text-purple',

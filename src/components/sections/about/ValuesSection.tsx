@@ -37,7 +37,7 @@ export default function ValuesSection() {
       <div className="section-container">
         <motion.div ref={ref} variants={variants} initial="hidden" animate={animate} className="mb-10">
           <SectionLabel>Our Values</SectionLabel>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-light font-sans">
+          <h2 className="text-xl font-bold text-slate-light font-sans">
             How We Actually Operate
           </h2>
         </motion.div>

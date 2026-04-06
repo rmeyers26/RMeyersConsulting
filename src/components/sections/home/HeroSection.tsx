@@ -124,7 +124,7 @@ export default function HeroSection() {
             <span className="font-mono text-xs text-cyan-dim tracking-[0.2em] uppercase mb-4 block">
               // Software That Fits
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-sans font-bold text-slate-light leading-[1.1] mb-6">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-sans font-bold text-slate-light leading-[1.1] mb-6">
               We Build Software{' '}
               <span className="text-gradient-cyan">That Works</span>{' '}
               Like You Think.

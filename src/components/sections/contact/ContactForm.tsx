@@ -10,6 +10,11 @@ function encodeNetlifyForm(data: Record<string, string>) {
   return params.toString()
 }
 
+const inputClass =
+  'w-full px-4 py-3 rounded-lg border border-border bg-abyss text-slate-light placeholder:text-ghost/40 focus:outline-none focus:ring-2 focus:ring-cyan/40 focus:border-cyan/60 transition-colors disabled:opacity-50'
+
+const labelClass = 'block text-sm text-cyan-dim mb-2'
+
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
 
@@ -18,7 +23,6 @@ export default function ContactForm() {
   useEffect(() => {
     if (status === 'success') {
       const id = setTimeout(() => {
-        // Send user back to home after brief thank-you state
         router.push('/')
       }, 3500)
       return () => clearTimeout(id)
@@ -84,47 +88,35 @@ export default function ContactForm() {
         style={{ maxWidth: 480, margin: '0 auto', background: '#101828', padding: '24px 16px', borderRadius: 12 }}
       >
         <input type="hidden" name="form-name" value="contact" />
-        <p style={{ display: 'none' }}>
+        <p className="hidden">
           <label>
-            Don’t fill this out if you’re human: <input name="bot-field" />
+            Don&apos;t fill this out if you&apos;re human: <input name="bot-field" />
           </label>
         </p>
-        {status === 'success' ? (
+
+        {status === 'success' && (
           <div
             role="status"
             aria-live="polite"
-            style={{
-              marginBottom: 16,
-              border: '1px solid #14532d',
-              background: '#052e16',
-              color: '#bbf7d0',
-              padding: 12,
-              borderRadius: 8,
-              fontSize: 14,
-            }}
+            className="mb-6 px-4 py-3 rounded-lg border border-green/30 bg-green/5 text-green text-sm"
           >
-            Thanks — your message was sent. We’ll get back to you soon.
+            Thanks — your message was sent. We&apos;ll get back to you soon.
           </div>
-        ) : null}
-        {status === 'error' ? (
+        )}
+
+        {status === 'error' && (
           <div
             role="alert"
-            style={{
-              marginBottom: 16,
-              border: '1px solid #7f1d1d',
-              background: '#450a0a',
-              color: '#fecaca',
-              padding: 12,
-              borderRadius: 8,
-              fontSize: 14,
-            }}
+            className="mb-6 px-4 py-3 rounded-lg border border-cinnabar/40 bg-cinnabar/5 text-slate-light text-sm"
           >
             Something went wrong sending your message. Please try again, or email us directly.
           </div>
-        ) : null}
-        <h2 style={{ color: '#fff', fontSize: 24, marginBottom: 24 }}>Contact Us</h2>
-        <div style={{ marginBottom: 16 }}>
-          <label htmlFor="name" style={{ color: '#7dd3fc', fontSize: 14, display: 'block', marginBottom: 4 }}>Your Name *</label>
+        )}
+
+        <h2 className="text-xl font-bold text-slate-light font-sans mb-8">Contact Us</h2>
+
+        <div className="mb-6">
+          <label htmlFor="name" className={labelClass}>Your Name *</label>
           <input
             required
             type="text"
@@ -135,8 +127,9 @@ export default function ContactForm() {
             style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', boxSizing: 'border-box' }}
           />
         </div>
-        <div style={{ marginBottom: 16 }}>
-          <label htmlFor="email" style={{ color: '#7dd3fc', fontSize: 14, display: 'block', marginBottom: 4 }}>Email *</label>
+
+        <div className="mb-6">
+          <label htmlFor="email" className={labelClass}>Email *</label>
           <input
             required
             type="email"
@@ -147,8 +140,9 @@ export default function ContactForm() {
             style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', boxSizing: 'border-box' }}
           />
         </div>
-        <div style={{ marginBottom: 16 }}>
-          <label htmlFor="company" style={{ color: '#7dd3fc', fontSize: 14, display: 'block', marginBottom: 4 }}>Company</label>
+
+        <div className="mb-6">
+          <label htmlFor="company" className={labelClass}>Company</label>
           <input
             type="text"
             id="company"
@@ -158,8 +152,9 @@ export default function ContactForm() {
             style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', boxSizing: 'border-box' }}
           />
         </div>
-        <div style={{ marginBottom: 20 }}>
-          <label htmlFor="message" style={{ color: '#7dd3fc', fontSize: 14, display: 'block', marginBottom: 4 }}>Tell us about your project *</label>
+
+        <div className="mb-8">
+          <label htmlFor="message" className={labelClass}>Tell us about your project *</label>
           <textarea
             required
             id="message"
@@ -170,10 +165,11 @@ export default function ContactForm() {
             style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', resize: 'vertical', boxSizing: 'border-box' }}
           />
         </div>
+
         <button
           type="submit"
           disabled={isDisabled}
-          style={{ width: '100%', padding: 12, borderRadius: 6, background: '#06b6d4', color: '#fff', fontWeight: 600, fontSize: 16, border: 'none', cursor: 'pointer' }}
+          className="w-full py-4 rounded-lg bg-cyan text-void font-sans font-semibold text-base hover:bg-cyan-dim transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {status === 'submitting' ? 'Sending…' : status === 'success' ? 'Sent' : 'Send Message'}
         </button>
