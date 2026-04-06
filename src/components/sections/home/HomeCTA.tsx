@@ -31,7 +31,7 @@ export default function HomeCTA() {
             No sales pitch — just a working session on your current process.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3 justify-center">
             <GlowButton href="/contact" variant="primary" size="lg">
               Get a Working Plan in 30 Min
             </GlowButton>

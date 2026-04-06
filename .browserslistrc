@@ -1,0 +1,17 @@
+# Target browsers for Babel transpilation and PostCSS autoprefixer.
+# This covers 5-10 year old mobile devices (iOS 12+, Android Chrome 70+).
+[production]
+> 0.5%
+last 3 Chrome versions
+last 3 Firefox versions
+last 3 Safari versions
+iOS >= 12
+Android >= 5
+and_chr >= 70
+chrome >= 70
+not dead
+
+[development]
+last 1 Chrome version
+last 1 Firefox version
+last 1 Safari version

@@ -29,6 +29,9 @@ export default function GlowOrb({
     purple: 'bg-purple/8',
   }
 
+  // Use a lighter blur on mobile to reduce GPU load on older devices.
+  // blur-[40px] on small screens, blur-[80px] on larger screens.
+
   if (animate) {
     return (
       <motion.div
@@ -36,7 +39,7 @@ export default function GlowOrb({
           'absolute rounded-full pointer-events-none',
           sizeClasses[size],
           colorClasses[color],
-          'blur-[80px]',
+          'blur-[40px] sm:blur-[80px]',
           className
         )}
         animate={{ opacity: [0.4, 0.8, 0.4] }}
@@ -51,7 +54,7 @@ export default function GlowOrb({
         'absolute rounded-full pointer-events-none',
         sizeClasses[size],
         colorClasses[color],
-        'blur-[80px] opacity-60',
+        'blur-[40px] sm:blur-[80px] opacity-60',
         className
       )}
     />

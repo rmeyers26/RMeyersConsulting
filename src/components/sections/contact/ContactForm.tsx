@@ -85,7 +85,7 @@ export default function ContactForm() {
         netlify-honeypot="bot-field"
         action="/__forms.html"
         onSubmit={onSubmit}
-        className="max-w-lg mx-auto bg-surface rounded-xl p-10 border border-border/40"
+        style={{ maxWidth: 480, margin: '0 auto', background: '#101828', padding: '24px 16px', borderRadius: 12 }}
       >
         <input type="hidden" name="form-name" value="contact" />
         <p className="hidden">
@@ -124,7 +124,7 @@ export default function ContactForm() {
             name="name"
             placeholder="Jane Smith"
             disabled={isDisabled}
-            className={inputClass}
+            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', boxSizing: 'border-box' }}
           />
         </div>
 
@@ -137,7 +137,7 @@ export default function ContactForm() {
             name="email"
             placeholder="jane@company.com"
             disabled={isDisabled}
-            className={inputClass}
+            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', boxSizing: 'border-box' }}
           />
         </div>
 
@@ -149,7 +149,7 @@ export default function ContactForm() {
             name="company"
             placeholder="Acme Corp (optional)"
             disabled={isDisabled}
-            className={inputClass}
+            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', boxSizing: 'border-box' }}
           />
         </div>
 
@@ -162,7 +162,7 @@ export default function ContactForm() {
             rows={5}
             placeholder="What problem are you trying to solve? What tools are you using today? What does success look like?"
             disabled={isDisabled}
-            className={`${inputClass} resize-vertical`}
+            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', resize: 'vertical', boxSizing: 'border-box' }}
           />
         </div>
 

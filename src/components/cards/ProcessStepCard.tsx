@@ -50,14 +50,14 @@ export default function ProcessStepCard({ step, index, isLast }: ProcessStepCard
         )}
         onClick={() => setExpanded(v => !v)}
       >
-        <div className="flex items-start gap-5">
+        <div className="flex items-start space-x-5">
           {/* Number node */}
           <div className="w-12 h-12 rounded-xl border border-border bg-abyss flex items-center justify-center shrink-0">
             <span className="font-mono text-sm font-bold text-green">{step.number}</span>
           </div>
 
           <div className="flex-1 min-w-0">
-            <div className="flex items-start justify-between gap-3">
+            <div className="flex items-start justify-between space-x-3">
               <div>
                 <h3 className="text-slate-light font-semibold font-sans text-lg">
                   {step.title}
@@ -83,12 +83,12 @@ export default function ProcessStepCard({ step, index, isLast }: ProcessStepCard
                 >
                   <div className="pt-4 space-y-4">
                     <p className="text-ghost text-sm leading-relaxed">{step.description}</p>
-                    <div className="flex flex-col sm:flex-row gap-4 font-mono text-xs">
-                      <div className="flex items-center gap-2">
+                    <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 font-mono text-xs">
+                      <div className="flex items-center space-x-2">
                         <span className="text-cyan-dim">// deliverable</span>
                         <span className="text-ghost">{step.deliverable}</span>
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center space-x-2">
                         <span className="text-cyan-dim">// timeline</span>
                         <span className="text-ghost">{step.duration}</span>
                       </div>
