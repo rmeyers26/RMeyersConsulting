@@ -37,10 +37,12 @@
   }
 
   /* Prevent iOS from auto-zooming when inputs are focused.
-     Browsers zoom in when the focused element has font-size < 16px. */
+     Browsers zoom in when the focused element has font-size < 16px.
+     The 16px plain value is a fallback for iOS 12 Safari which doesn't support max(). */
   input,
   textarea,
   select {
+    font-size: 16px;
     font-size: max(16px, 1em);
   }
 
@@ -102,17 +104,13 @@
   }
 }
 
-/* Fallback for browsers that don't support backdrop-filter (Android Chrome < 76).
-   Elements using backdrop-blur will still have a solid dark background. */
-@supports not (backdrop-filter: blur(1px)) {
-  .supports-backdrop-fallback {
+/* Fallback for browsers that don't support backdrop-filter (Android Chrome < 76, iOS < 9).
+   Automatically targets all Tailwind backdrop-blur utilities so blurred elements
+   still render with a solid dark background instead of being invisible/transparent. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  [class~="backdrop-blur"],
+  [class^="backdrop-blur-"],
+  [class*=" backdrop-blur-"] {
     background-color: rgba(5, 8, 16, 0.95) !important;
-  }
-}
-
-/* Reduce heavy blur effects on small/low-power mobile screens */
-@media (max-width: 768px) {
-  .mobile-blur-reduce {
-    filter: blur(40px) !important;
   }
 }

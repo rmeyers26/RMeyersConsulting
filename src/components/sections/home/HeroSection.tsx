@@ -23,13 +23,21 @@ export default function HeroSection() {
 
   const scenario = terminalScenarios[scenarioIdx]
 
-  // Detect large screen to conditionally enable 3D transform
+  // Detect large screen to conditionally enable 3D transform.
+  // Use addListener/removeListener as a fallback for iOS 12 Safari and older
+  // Chromium builds that do not support addEventListener on MediaQueryList.
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 1024px)')
     setIsLargeScreen(mq.matches)
     const handler = (e: MediaQueryListEvent) => setIsLargeScreen(e.matches)
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
+    if (typeof mq.addEventListener === 'function') {
+      mq.addEventListener('change', handler)
+      return () => mq.removeEventListener('change', handler)
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ;(mq as any).addListener(handler)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return () => (mq as any).removeListener(handler)
   }, [])
 
   // Disable 3D tilt on mobile/tablet or when reduced motion is preferred

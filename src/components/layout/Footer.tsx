@@ -11,10 +11,10 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-abyss">
       <div className="section-container py-10">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-6 sm:space-y-0">
           {/* Logo */}
           <div>
-            <Link href="/" className="flex items-center gap-1 group">
+            <Link href="/" className="flex items-center space-x-1 group">
               <span className="text-slate-light font-sans font-semibold tracking-tight group-hover:text-white transition-colors">
                 RMeyers
               </span>
@@ -28,12 +28,12 @@ export default function Footer() {
           </div>
 
           {/* Nav links */}
-          <nav className="flex flex-wrap gap-x-6 gap-y-2">
+          <nav className="flex flex-wrap">
             {footerLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-ghost hover:text-cyan-dim font-mono transition-colors"
+                className="mr-6 mb-2 text-sm text-ghost hover:text-cyan-dim font-mono transition-colors"
               >
                 {link.label}
               </Link>
@@ -41,7 +41,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-border/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="mt-8 pt-6 border-t border-border/40 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-3 sm:space-y-0">
           <p className="font-mono text-xs text-ghost/60">
             © {new Date().getFullYear()} RMeyers Consulting. All rights reserved.
           </p>
