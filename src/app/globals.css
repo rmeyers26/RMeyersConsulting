@@ -42,7 +42,7 @@
   input,
   textarea,
   select {
-    font-size: 16px;
+    font-size: 16px; /* fallback for iOS 12 Safari which doesn't support max() */
     font-size: max(16px, 1em);
   }
 

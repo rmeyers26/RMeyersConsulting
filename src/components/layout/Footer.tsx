@@ -33,7 +33,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="mr-6 mb-2 text-sm text-ghost hover:text-cyan-dim font-mono transition-colors"
+                className="mr-6 mb-2 last:mr-0 text-sm text-ghost hover:text-cyan-dim font-mono transition-colors"
               >
                 {link.label}
               </Link>
