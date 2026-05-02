@@ -7,7 +7,7 @@ import { staggerContainer } from '@/hooks/useScrollAnimation'
 
 export default function ProcessPipeline() {
   return (
-    <section className="section-padding bg-abyss">
+    <section className="section-padding bg-canvas">
       <div className="section-container">
         <motion.div
           variants={staggerContainer}

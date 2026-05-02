@@ -11,9 +11,9 @@ function encodeNetlifyForm(data: Record<string, string>) {
 }
 
 const inputClass =
-  'w-full px-4 py-3 rounded-lg border border-border bg-abyss text-slate-light placeholder:text-ghost/40 focus:outline-none focus:ring-2 focus:ring-cyan/40 focus:border-cyan/60 transition-colors disabled:opacity-50'
+  'w-full px-4 py-3 rounded-lg border border-border bg-canvas text-ink placeholder:text-ink-3 focus:outline-none focus:ring-2 focus:ring-amber/40 focus:border-amber/60 transition-colors disabled:opacity-50'
 
-const labelClass = 'block text-sm text-cyan-dim mb-2'
+const labelClass = 'block text-sm text-ink-2 mb-2'
 
 export default function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
@@ -85,7 +85,7 @@ export default function ContactForm() {
         netlify-honeypot="bot-field"
         action="/__forms.html"
         onSubmit={onSubmit}
-        style={{ maxWidth: 480, margin: '0 auto', background: '#101828', padding: '24px 16px', borderRadius: 12 }}
+        className="max-w-lg mx-auto bg-surface border border-border rounded-xl p-6 sm:p-8"
       >
         <input type="hidden" name="form-name" value="contact" />
         <p className="hidden">
@@ -98,7 +98,7 @@ export default function ContactForm() {
           <div
             role="status"
             aria-live="polite"
-            className="mb-6 px-4 py-3 rounded-lg border border-green/30 bg-green/5 text-green text-sm"
+            className="mb-6 px-4 py-3 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700 text-sm"
           >
             Thanks — your message was sent. We&apos;ll get back to you soon.
           </div>
@@ -107,13 +107,13 @@ export default function ContactForm() {
         {status === 'error' && (
           <div
             role="alert"
-            className="mb-6 px-4 py-3 rounded-lg border border-cinnabar/40 bg-cinnabar/5 text-slate-light text-sm"
+            className="mb-6 px-4 py-3 rounded-lg border border-red-200 bg-red-50 text-red-700 text-sm"
           >
             Something went wrong sending your message. Please try again, or email us directly.
           </div>
         )}
 
-        <h2 className="text-xl font-bold text-slate-light font-sans mb-8">Contact Us</h2>
+        <h2 className="text-xl font-bold text-ink font-sans mb-8">Contact Us</h2>
 
         <div className="mb-6">
           <label htmlFor="name" className={labelClass}>Your Name *</label>
@@ -124,7 +124,7 @@ export default function ContactForm() {
             name="name"
             placeholder="Jane Smith"
             disabled={isDisabled}
-            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', boxSizing: 'border-box' }}
+            className={inputClass}
           />
         </div>
 
@@ -137,7 +137,7 @@ export default function ContactForm() {
             name="email"
             placeholder="jane@company.com"
             disabled={isDisabled}
-            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', boxSizing: 'border-box' }}
+            className={inputClass}
           />
         </div>
 
@@ -149,7 +149,7 @@ export default function ContactForm() {
             name="company"
             placeholder="Acme Corp (optional)"
             disabled={isDisabled}
-            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', boxSizing: 'border-box' }}
+            className={inputClass}
           />
         </div>
 
@@ -162,14 +162,14 @@ export default function ContactForm() {
             rows={5}
             placeholder="What problem are you trying to solve? What tools are you using today? What does success look like?"
             disabled={isDisabled}
-            style={{ width: '100%', padding: 10, borderRadius: 6, border: '1px solid #334155', background: '#0f172a', color: '#fff', resize: 'vertical', boxSizing: 'border-box' }}
+            className={`${inputClass} resize-vertical`}
           />
         </div>
 
         <button
           type="submit"
           disabled={isDisabled}
-          className="w-full py-4 rounded-lg bg-cyan text-void font-sans font-semibold text-base hover:bg-cyan-dim transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-4 rounded-lg bg-amber text-white font-sans font-semibold text-base hover:bg-amber-dim transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {status === 'submitting' ? 'Sending…' : status === 'success' ? 'Sent' : 'Send Message'}
         </button>

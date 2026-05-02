@@ -11,7 +11,7 @@ export default function GridOverlay({ className, variant = 'dots' }: GridOverlay
       <div
         className={cn('absolute inset-0 pointer-events-none', className)}
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(0,212,255,0.08) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, rgba(28,25,23,0.025) 1px, transparent 1px)',
           backgroundSize: '32px 32px',
         }}
       />
@@ -23,8 +23,8 @@ export default function GridOverlay({ className, variant = 'dots' }: GridOverlay
       className={cn('absolute inset-0 pointer-events-none', className)}
       style={{
         backgroundImage: `
-          linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px)
+          linear-gradient(rgba(28,25,23,0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(28,25,23,0.02) 1px, transparent 1px)
         `,
         backgroundSize: '40px 40px',
       }}

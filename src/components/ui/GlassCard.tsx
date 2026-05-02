@@ -16,10 +16,8 @@ export default function GlassCard({
   return (
     <div
       className={cn(
-        'bg-surface/60 backdrop-blur-sm border border-border rounded-xl shadow-card',
-        hover && 'transition-all duration-300 hover:border-cyan/40 hover:shadow-glow-sm',
-        glow === 'cyan' && 'border-cyan/30 shadow-glow-sm',
-        glow === 'green' && 'border-green/30',
+        'bg-surface border border-border rounded-xl shadow-card',
+        hover && 'transition-all duration-300 hover:shadow-card-hover hover:border-surface-2',
         className
       )}
     >

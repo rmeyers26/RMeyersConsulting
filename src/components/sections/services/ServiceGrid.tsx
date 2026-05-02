@@ -14,17 +14,15 @@ const buckets = [
 
 export default function ServiceGrid() {
   return (
-    <section className="section-padding bg-abyss">
+    <section className="section-padding bg-canvas">
       <div className="section-container space-y-20">
         {buckets.map((bucket) => {
           const bucketServices = services.filter(s => s.bucket === bucket.id)
           return (
             <div key={bucket.id}>
               <div className="mb-8">
-                <SectionLabel color={bucket.id === 'automate' ? 'green' : 'cyan'}>
-                  {bucket.label}
-                </SectionLabel>
-                <p className="text-ghost text-sm">{bucket.description}</p>
+                <SectionLabel>{bucket.label}</SectionLabel>
+                <p className="text-ink-2 text-sm">{bucket.description}</p>
               </div>
 
               <motion.div
