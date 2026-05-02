@@ -10,53 +10,36 @@ interface GlowOrbProps {
   animate?: boolean
 }
 
+const sizeMap = {
+  sm:  { width: 160,  height: 160 },
+  md:  { width: 256,  height: 256 },
+  lg:  { width: 384,  height: 384 },
+  xl:  { width: 600,  height: 600 },
+}
+
 export default function GlowOrb({
-  color = 'cyan',
+  color,
   size = 'lg',
   className,
   animate = true,
 }: GlowOrbProps) {
-  const sizeClasses = {
-    sm: 'w-40 h-40',
-    md: 'w-64 h-64',
-    lg: 'w-96 h-96',
-    xl: 'w-[600px] h-[600px]',
-  }
-
-  const colorClasses = {
-    cyan:   'bg-cyan/5',
-    green:  'bg-green/5',
-    purple: 'bg-purple/8',
-  }
-
-  // Use a lighter blur on mobile to reduce GPU load on older devices.
-  // blur-[40px] on small screens, blur-[80px] on larger screens.
+  const dims = sizeMap[size]
 
   if (animate) {
     return (
       <motion.div
-        className={cn(
-          'absolute rounded-full pointer-events-none',
-          sizeClasses[size],
-          colorClasses[color],
-          'blur-[40px] sm:blur-[80px]',
-          className
-        )}
-        animate={{ opacity: [0.4, 0.8, 0.4] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        className={cn('absolute rounded-full bg-amber/8 pointer-events-none blur-[120px]', className)}
+        style={{ width: dims.width, height: dims.height }}
+        animate={{ opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
     )
   }
 
   return (
     <div
-      className={cn(
-        'absolute rounded-full pointer-events-none',
-        sizeClasses[size],
-        colorClasses[color],
-        'blur-[40px] sm:blur-[80px] opacity-60',
-        className
-      )}
+      className={cn('absolute rounded-full bg-amber/8 pointer-events-none blur-[120px] opacity-40', className)}
+      style={{ width: dims.width, height: dims.height }}
     />
   )
 }

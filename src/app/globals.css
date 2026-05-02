@@ -4,15 +4,9 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
     --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', Consolas, 'Courier New', monospace;
-    /* Brand palette */
-    --porcelain: #fffffа;
-    --charcoal:  #515052;
-    --black:     #000103;
-    --graphite:  #333138;
-    --cinnabar:  #ff312e;
   }
 
   html {
@@ -24,7 +18,7 @@
   }
 
   body {
-    @apply bg-void text-ghost overflow-x-hidden;
+    @apply bg-canvas text-ink overflow-x-hidden;
   }
 
   /* Remove tap highlight on mobile browsers (iOS/Android) */
@@ -54,25 +48,16 @@
 
   /* Custom scrollbar */
   ::-webkit-scrollbar       { width: 5px; }
-  ::-webkit-scrollbar-track { background: #050810; }
-  ::-webkit-scrollbar-thumb { background: #1a2744; border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: #00a3c4; }
+  ::-webkit-scrollbar-track { background: #ECEAE5; }
+  ::-webkit-scrollbar-thumb { background: #DDD9D2; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #C8641A; }
 
   * {
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/60 focus-visible:ring-offset-2 focus-visible:ring-offset-void;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber/50 focus-visible:ring-offset-2 focus-visible:ring-offset-canvas;
   }
 }
 
 @layer components {
-  .text-gradient-cyan {
-    @apply bg-gradient-to-r from-cyan to-green bg-clip-text text-transparent;
-  }
-
-  .glass-border {
-    @apply border border-white/5;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
-  }
-
   .section-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
@@ -80,23 +65,10 @@
   .section-padding {
     @apply py-24 md:py-36;
   }
-}
 
-/* Terminal cursor */
-.cursor-blink::after {
-  content: '|';
-  color: #00ff88;
-  animation: blink 1s step-end infinite;
-}
-
-/* Pipeline flow line */
-@keyframes flowDash {
-  to { stroke-dashoffset: -24; }
-}
-
-.flow-line {
-  stroke-dasharray: 8 4;
-  animation: flowDash 0.8s linear infinite;
+  .hero-gradient {
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,100,26,0.06) 0%, transparent 70%);
+  }
 }
 
 /* Reduced motion support */
@@ -112,11 +84,11 @@
 
 /* Fallback for browsers that don't support backdrop-filter (Android Chrome < 76, iOS < 9).
    Automatically targets all Tailwind backdrop-blur utilities so blurred elements
-   still render with a solid dark background instead of being invisible/transparent. */
+   still render with a solid background instead of being invisible/transparent. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   [class~="backdrop-blur"],
   [class^="backdrop-blur-"],
   [class*=" backdrop-blur-"] {
-    background-color: rgba(5, 8, 16, 0.95) !important;
+    background-color: rgba(250, 250, 248, 0.97) !important;
   }
 }

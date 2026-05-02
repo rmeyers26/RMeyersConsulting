@@ -48,18 +48,18 @@ export default function Navbar() {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           scrolled
-            ? 'bg-void/90 backdrop-blur-md border-b border-border/40 py-3'
+            ? 'bg-canvas/95 backdrop-blur-md border-b border-border py-3'
             : 'bg-transparent py-5'
         )}
       >
         <div className="section-container flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1 group">
-            <span className="text-slate-light font-sans font-semibold text-lg tracking-tight group-hover:text-white transition-colors">
+            <span className="text-ink font-sans font-semibold text-lg tracking-tight group-hover:text-ink transition-colors">
               RMeyers
             </span>
-            <span className="font-mono text-cyan-dim text-sm ml-1">
-              // Consulting
+            <span className="font-sans text-ink-2 text-sm ml-1">
+              Consulting
             </span>
           </Link>
 
@@ -70,17 +70,17 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'relative px-3 py-2 text-sm font-mono transition-colors',
+                  'relative px-3 py-2 text-sm font-sans transition-colors',
                   isNavLinkActive(link.href)
-                    ? 'text-cyan'
-                    : 'text-ghost hover:text-slate-light'
+                    ? 'text-amber'
+                    : 'text-ink-2 hover:text-ink'
                 )}
               >
                 {link.label}
                 {isNavLinkActive(link.href) && (
                   <motion.span
                     layoutId="nav-indicator"
-                    className="absolute bottom-0 left-3 right-3 h-px bg-cyan"
+                    className="absolute bottom-0 left-3 right-3 h-px bg-amber"
                   />
                 )}
               </Link>
@@ -96,7 +96,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden text-ghost hover:text-slate-light p-2 -mr-2"
+            className="md:hidden text-ink-2 hover:text-ink p-2 -mr-2"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
@@ -126,7 +126,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 md:hidden bg-void/98 backdrop-blur-lg pt-20 px-6 flex flex-col"
+            className="fixed inset-0 z-40 md:hidden bg-canvas/98 backdrop-blur-lg pt-20 px-6 flex flex-col"
           >
             <nav className="flex flex-col gap-1 mt-4">
               {navLinks.map((link) => (
@@ -135,10 +135,10 @@ export default function Navbar() {
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className={cn(
-                    'px-4 py-3.5 font-mono text-base sm:text-lg border-b border-border/40',
+                    'px-4 py-3.5 font-sans text-base sm:text-lg border-b border-border',
                     isNavLinkActive(link.href)
-                      ? 'text-cyan'
-                      : 'text-ghost hover:text-slate-light'
+                      ? 'text-amber'
+                      : 'text-ink-2 hover:text-ink'
                   )}
                 >
                   {link.label}

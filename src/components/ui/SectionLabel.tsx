@@ -9,18 +9,16 @@ interface SectionLabelProps {
 export default function SectionLabel({
   children,
   className,
-  color = 'cyan',
+  // color prop retained for backwards compatibility but no longer used
 }: SectionLabelProps) {
   return (
     <span
       className={cn(
-        'font-mono text-xs tracking-[0.2em] uppercase block mb-3',
-        color === 'cyan' && 'text-cyan-dim',
-        color === 'green' && 'text-green-dim',
+        'font-sans text-xs tracking-widest uppercase text-amber font-medium block mb-4',
         className
       )}
     >
-      {`// ${children}`}
+      {children}
     </span>
   )
 }

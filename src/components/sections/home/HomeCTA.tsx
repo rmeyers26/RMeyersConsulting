@@ -2,16 +2,14 @@
 
 import { motion } from 'framer-motion'
 import GlowButton from '@/components/ui/GlowButton'
-import GlowOrb from '@/components/effects/GlowOrb'
+import SectionLabel from '@/components/ui/SectionLabel'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 export default function HomeCTA() {
   const { ref, variants, animate } = useScrollAnimation()
 
   return (
-    <section className="section-padding relative overflow-hidden bg-gradient-to-b from-abyss to-void">
-      <GlowOrb color="cyan" size="xl" className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-
+    <section className="section-padding relative overflow-hidden bg-surface">
       <div className="section-container relative z-10">
         <motion.div
           ref={ref}
@@ -20,28 +18,20 @@ export default function HomeCTA() {
           animate={animate}
           className="text-center max-w-2xl mx-auto"
         >
-          <span className="font-mono text-xs text-cyan-dim tracking-[0.2em] uppercase mb-4 block">
-            // Ready when you are
-          </span>
-          <h2 className="text-xl md:text-2xl font-bold text-slate-light font-sans mb-6 leading-tight">
-            Let&apos;s Fix Your{' '}
-            <span className="text-gradient-cyan">Workflow</span>
+          <SectionLabel>Get Started</SectionLabel>
+          <h2 className="text-xl md:text-2xl font-bold text-ink font-sans mb-6 leading-tight">
+            Ready to start?
           </h2>
-          <p className="text-ghost text-lg mb-10">
-            No sales pitch — just a working session on your current process.
+          <p className="text-ink-2 text-lg mb-10">
+            Tell us what you&apos;re building. We&apos;ll take it from there.
           </p>
 
-          <div className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3 justify-center">
-            <GlowButton href="/contact" variant="primary" size="lg">
-              Get a Working Plan in 30 Min
-            </GlowButton>
-            <GlowButton href="/services" variant="ghost" size="lg">
-              See What We Build
-            </GlowButton>
-          </div>
+          <GlowButton href="/contact" variant="primary" size="lg">
+            Get a Working Plan in 30 Min
+          </GlowButton>
 
-          <p className="mt-8 font-mono text-xs text-ghost/50">
-            // We respond within 24 hours
+          <p className="mt-8 text-xs text-ink-3">
+            We respond within 24 hours.
           </p>
         </motion.div>
       </div>

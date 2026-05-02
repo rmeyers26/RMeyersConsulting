@@ -22,39 +22,24 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
       }}
       className={cn(
         'relative rounded-xl border p-6 overflow-hidden group',
-        'bg-surface/60 backdrop-blur-sm border-border',
+        'bg-surface border-border',
         'transition-all duration-300',
-        'hover:border-cyan/30 hover:shadow-glow-sm'
+        'hover:border-amber/30 hover:shadow-card-hover'
       )}
     >
-      {/* Top accent bar */}
-      <div
-        className={cn(
-          'absolute top-0 left-0 right-0 h-[2px] transition-all duration-300',
-          service.accentColor === 'cyan'   && 'bg-cyan/0 group-hover:bg-cyan/60',
-          service.accentColor === 'green'  && 'bg-green/0 group-hover:bg-green/60',
-          service.accentColor === 'purple' && 'bg-purple/0 group-hover:bg-purple/60',
-        )}
-      />
-
-      <div className={cn(
-        'text-xl mb-4',
-        service.accentColor === 'cyan'   && 'text-cyan',
-        service.accentColor === 'green'  && 'text-green',
-        service.accentColor === 'purple' && 'text-purple',
-      )}>
+      <div className="text-xl mb-4 text-amber">
         {service.icon}
       </div>
-      <h3 className="text-slate-light font-semibold text-lg mb-2 font-sans">
+      <h3 className="text-ink font-semibold text-lg mb-2 font-sans">
         {service.title}
       </h3>
-      <p className="text-ghost text-sm leading-relaxed mb-4">
+      <p className="text-ink-2 text-sm leading-relaxed mb-4">
         {service.description}
       </p>
       <ul className="space-y-1">
         {service.deliverables.map((d, i) => (
-          <li key={i} className="flex items-center gap-2 text-xs text-ghost/80">
-            <span className="text-cyan-dim">›</span>
+          <li key={i} className="flex items-center gap-2 text-xs text-ink-2">
+            <span className="text-amber">›</span>
             {d}
           </li>
         ))}

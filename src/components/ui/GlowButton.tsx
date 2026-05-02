@@ -23,23 +23,23 @@ export default function GlowButton({
   disabled = false,
 }: GlowButtonProps) {
   const base = cn(
-    'inline-flex items-center justify-center font-mono font-medium rounded-lg transition-all duration-200 cursor-pointer select-none',
+    'inline-flex items-center justify-center font-sans font-medium rounded-lg transition-all duration-200 cursor-pointer select-none',
     size === 'sm' && 'text-xs px-4 py-2 gap-1.5',
     size === 'md' && 'text-sm px-6 py-3 gap-2',
     size === 'lg' && 'text-base px-8 py-4 gap-2',
     variant === 'primary' && [
-      'bg-cyan text-void',
-      'hover:bg-cyan/90 hover:shadow-glow-cyan',
+      'bg-amber text-white',
+      'hover:bg-amber-dim',
       'active:scale-[0.98]',
     ],
     variant === 'outline' && [
-      'bg-transparent text-cyan border border-cyan/50',
-      'hover:border-cyan hover:bg-cyan/5 hover:shadow-glow-sm',
+      'bg-transparent text-amber border border-amber/40',
+      'hover:border-amber hover:bg-amber-light',
       'active:scale-[0.98]',
     ],
     variant === 'ghost' && [
-      'bg-transparent text-ghost border border-border',
-      'hover:border-border/80 hover:text-slate-light',
+      'bg-transparent text-ink-2 border border-border',
+      'hover:border-ink-3 hover:text-ink',
       'active:scale-[0.98]',
     ],
     disabled && 'opacity-50 cursor-not-allowed pointer-events-none',
