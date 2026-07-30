@@ -94,24 +94,26 @@ export default function ContactForm() {
           </label>
         </p>
 
-        {status === 'success' && (
-          <div
-            role="status"
-            aria-live="polite"
-            className="mb-6 px-4 py-3 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700 text-sm"
-          >
-            Thanks — your message was sent. We&apos;ll get back to you soon.
-          </div>
-        )}
-
-        {status === 'error' && (
-          <div
-            role="alert"
-            className="mb-6 px-4 py-3 rounded-lg border border-red-200 bg-red-50 text-red-700 text-sm"
-          >
-            Something went wrong sending your message. Please try again, or email us directly.
-          </div>
-        )}
+        {/* Pre-allocated container prevents CLS: space is always reserved so the
+            h2 and fields below never shift when an alert appears or disappears. */}
+        <div className="mb-6 min-h-[50px]" aria-live="polite">
+          {status === 'success' && (
+            <div
+              role="status"
+              className="px-4 py-3 rounded-lg border border-emerald-200 bg-emerald-50 text-emerald-700 text-sm"
+            >
+              Thanks — your message was sent. We&apos;ll get back to you soon.
+            </div>
+          )}
+          {status === 'error' && (
+            <div
+              role="alert"
+              className="px-4 py-3 rounded-lg border border-red-200 bg-red-50 text-red-700 text-sm"
+            >
+              Something went wrong sending your message. Please try again, or email us directly.
+            </div>
+          )}
+        </div>
 
         <h2 className="text-xl font-bold text-ink font-sans mb-8">Contact Us</h2>
 

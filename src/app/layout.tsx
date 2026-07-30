@@ -8,7 +8,11 @@ const instrumentSerif = Instrument_Serif({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-display',
-  display: 'swap',
+  // 'optional' eliminates font-swap CLS: the browser blocks for ~100ms waiting for
+  // the preloaded font, then commits to either the custom font or the fallback
+  // permanently — no mid-render swap. next/font preloads the font automatically,
+  // so most users on reasonable connections still see Instrument Serif.
+  display: 'optional',
 })
 
 export const viewport: Viewport = {

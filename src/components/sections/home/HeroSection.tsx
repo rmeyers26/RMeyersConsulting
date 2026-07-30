@@ -8,9 +8,12 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-canvas hero-gradient">
       <div className="section-container relative z-10 text-center max-w-4xl mx-auto py-32">
+        {/* No opacity in initial — H1 is visible at first paint so LCP is measured
+            at SSR time instead of after hydration + 0.9 s animation. The translateY
+            is a composited transform: visible content, zero layout impact (no CLS). */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ y: 16 }}
+          animate={{ y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col items-center"
         >
